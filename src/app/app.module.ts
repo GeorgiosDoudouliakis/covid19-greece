@@ -8,6 +8,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { OverallStatsComponent } from './components/overall-stats/overall-stats.component';
 import { CardComponent } from './components/card/card.component';
 import { StatsComponent } from './components/stats/stats.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { StatsComponent } from './components/stats/stats.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
