@@ -10,6 +10,7 @@ import { CardComponent } from './components/card/card.component';
 import { StatsComponent } from './components/stats/stats.component';
 import { ChartsModule } from 'ng2-charts';
 import { GenderComponent } from './components/gender/gender.component';
+import { AgeDistributionComponent } from './components/age-distribution/age-distribution.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { GenderComponent } from './components/gender/gender.component';
     OverallStatsComponent,
     CardComponent,
     StatsComponent,
-    GenderComponent
+    GenderComponent,
+    AgeDistributionComponent
   ],
   imports: [
     BrowserModule,
