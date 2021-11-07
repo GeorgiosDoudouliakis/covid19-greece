@@ -19,11 +19,13 @@ export class AgeDistributionComponent implements OnInit {
   public barChartPlugins = [];
   public barChartData: ChartDataSets[] = []
   public pieChartColors: any[] = [{ backgroundColor: ["#00D1B4", "#FFBF00", "#EC0067", "#333"] }];
+  public isLoading = true;
 
   constructor(private ageDistributionService: AgeDistributionService) { }
 
   ngOnInit(): void {
     this.ageDistributionService.getAgeDistributionCases().subscribe((res: AgeDistribution) => {
+      this.isLoading = false;
       const { cases } = res.total_age_groups;
       this.barChartLabels = Object.keys(cases);
       this.barChartData = [{ data: Object.values(cases) }]

@@ -11,6 +11,7 @@ import { StatsComponent } from './components/stats/stats.component';
 import { ChartsModule } from 'ng2-charts';
 import { GenderComponent } from './components/gender/gender.component';
 import { AgeDistributionComponent } from './components/age-distribution/age-distribution.component';
+import { LoaderComponent } from './shared/components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AgeDistributionComponent } from './components/age-distribution/age-dist
     CardComponent,
     StatsComponent,
     GenderComponent,
-    AgeDistributionComponent
+    AgeDistributionComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

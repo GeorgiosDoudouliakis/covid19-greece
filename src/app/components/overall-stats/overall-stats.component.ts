@@ -13,6 +13,7 @@ export class OverallStatsComponent implements OnInit {
   recovered = {} as OverallStats;
   deaths = {} as OverallStats;
   active = {} as OverallStats;
+  isLoading = true;
 
   constructor(private overallStatsService: OverallStatsService) { }
 
@@ -23,6 +24,8 @@ export class OverallStatsComponent implements OnInit {
         this.overallStatsService.getDeathCases(),
         this.overallStatsService.getActiveCases() 
       ]).subscribe((res: any) => {
+        this.isLoading = false;
+
         this.confirmed = {
           title: 'Confirmed',
           cases: res[0].cases[res[0].cases.length - 1].confirmed
