@@ -9,3 +9,7 @@
 body {
     min-height: 100vh;
 }
+
+.half-height {
+    height: calc(50vw - 144px);
+}
