@@ -22,4 +22,12 @@ export class OverallStatsService {
   getActiveCases() {
     return this.http.get("https://covid-19-greece.herokuapp.com/active");
   }
+
+  getIntensiveCareCases() {
+    return this.http.get("https://covid-19-greece.herokuapp.com/intensive-care");
+  }
+
+  getTotalTests() {
+    return this.http.get("https://covid-19-greece.herokuapp.com/total-tests");
+  }
 }

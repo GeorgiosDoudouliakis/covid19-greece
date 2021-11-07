@@ -8,7 +8,6 @@ import { OverallStats } from 'src/app/models/overall-stats.model';
 })
 export class CardComponent implements OnInit {
   @Input() stats = {} as OverallStats;
-  @Input() bgColor = '';
 
   constructor() { }
 

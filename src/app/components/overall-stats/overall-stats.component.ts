@@ -13,6 +13,9 @@ export class OverallStatsComponent implements OnInit {
   recovered = {} as OverallStats;
   deaths = {} as OverallStats;
   active = {} as OverallStats;
+  intensiveCare = {} as OverallStats;
+  rapidTests = {} as OverallStats;
+  tests = {} as OverallStats;
   isLoading = true;
 
   constructor(private overallStatsService: OverallStatsService) { }
@@ -22,7 +25,9 @@ export class OverallStatsComponent implements OnInit {
         this.overallStatsService.getConfirmedCases(),
         this.overallStatsService.getRecoveredCases(),
         this.overallStatsService.getDeathCases(),
-        this.overallStatsService.getActiveCases() 
+        this.overallStatsService.getActiveCases(), 
+        this.overallStatsService.getIntensiveCareCases(), 
+        this.overallStatsService.getTotalTests()
       ]).subscribe((res: any) => {
         this.isLoading = false;
 
@@ -44,6 +49,21 @@ export class OverallStatsComponent implements OnInit {
         this.active = {
           title: 'Active',
           cases: res[3].cases[res[3].cases.length - 1].active
+        };
+
+        this.intensiveCare = {
+          title: 'Intensive Care',
+          cases: res[4].cases[res[4].cases.length - 1].intensive_care
+        };
+        console.log(res[5]);
+        this.rapidTests = {
+          title: 'Rapid Tests',
+          cases: res[5].total_tests[res[5].total_tests.length - 1]['rapid-tests']
+        };
+
+        this.tests = {
+          title: 'Tests',
+          cases: res[5].total_tests[res[5].total_tests.length - 1].tests
         };
       })
   }
