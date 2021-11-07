@@ -9,14 +9,8 @@ import { forkJoin } from 'rxjs';
   styleUrls: ['./overall-stats.component.scss']
 })
 export class OverallStatsComponent implements OnInit {
-  confirmed = {} as OverallStats;
-  recovered = {} as OverallStats;
-  deaths = {} as OverallStats;
-  active = {} as OverallStats;
-  intensiveCare = {} as OverallStats;
-  rapidTests = {} as OverallStats;
-  tests = {} as OverallStats;
   isLoading = true;
+  overallStats: OverallStats[] = [];
 
   constructor(private overallStatsService: OverallStatsService) { }
 
@@ -30,41 +24,36 @@ export class OverallStatsComponent implements OnInit {
         this.overallStatsService.getTotalTests()
       ]).subscribe((res: any) => {
         this.isLoading = false;
-
-        this.confirmed = {
+        const confirmed = {
           title: 'Confirmed',
           cases: res[0].cases[res[0].cases.length - 1].confirmed
         };
-
-        this.recovered = {
+        const recovered = {
           title: 'Recovered',
           cases: res[1].cases[res[1].cases.length - 1].recovered
         };
-
-        this.deaths = {
+        const deaths = {
           title: 'Deaths',
           cases: res[2].cases[res[2].cases.length - 1].deaths
         };
-
-        this.active = {
+        const active = {
           title: 'Active',
           cases: res[3].cases[res[3].cases.length - 1].active
         };
-
-        this.intensiveCare = {
+        const intensiveCare = {
           title: 'Intensive Care',
           cases: res[4].cases[res[4].cases.length - 1].intensive_care
         };
-        console.log(res[5]);
-        this.rapidTests = {
+        const rapidTests = {
           title: 'Rapid Tests',
           cases: res[5].total_tests[res[5].total_tests.length - 1]['rapid-tests']
         };
-
-        this.tests = {
+        const tests = {
           title: 'Tests',
           cases: res[5].total_tests[res[5].total_tests.length - 1].tests
         };
+
+        this.overallStats = [confirmed,recovered,deaths,active,intensiveCare,rapidTests,tests]
       })
   }
 }
