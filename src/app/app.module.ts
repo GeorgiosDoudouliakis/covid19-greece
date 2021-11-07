@@ -8,6 +8,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { OverallStatsComponent } from './components/overall-stats/overall-stats.component';
 import { CardComponent } from './components/card/card.component';
 import { StatsComponent } from './components/stats/stats.component';
+import { ChartsModule } from 'ng2-charts';
+import { GenderComponent } from './components/gender/gender.component';
 
 @NgModule({
   declarations: [
@@ -16,12 +18,14 @@ import { StatsComponent } from './components/stats/stats.component';
     FooterComponent,
     OverallStatsComponent,
     CardComponent,
-    StatsComponent
+    StatsComponent,
+    GenderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
