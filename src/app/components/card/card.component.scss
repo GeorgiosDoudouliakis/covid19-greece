@@ -1,11 +1,15 @@
-@media(max-width: 1006px) {
+:host {
+    width: 100%;
+}
+
+@media(min-width: 768px) {
     :host {
-        width: 100%;
+        width: 48%;
     }
 }
 
-@media(min-width: 1007px) {
+@media(min-width: 1280px) {
     :host {
-        width: 48%;
+        width: 23%;
     }
 }
