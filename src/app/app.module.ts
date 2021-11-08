@@ -12,6 +12,7 @@ import { ChartsModule } from 'ng2-charts';
 import { GenderComponent } from './components/gender/gender.component';
 import { AgeDistributionComponent } from './components/age-distribution/age-distribution.component';
 import { LoaderComponent } from './shared/components/loader/loader.component';
+import { LatestCovidNewsComponent } from './components/latest-covid-news/latest-covid-news.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { LoaderComponent } from './shared/components/loader/loader.component';
     StatsComponent,
     GenderComponent,
     AgeDistributionComponent,
-    LoaderComponent
+    LoaderComponent,
+    LatestCovidNewsComponent
   ],
   imports: [
     BrowserModule,
