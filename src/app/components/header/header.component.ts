@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +6,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  private elementRef!: ElementRef;
+  private menu!: HTMLElement;
+  private navbarBurger!: HTMLElement;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private elRef: ElementRef) { 
+    this.elementRef = elRef;
   }
 
+  ngOnInit(): void {
+    this.menu = this.elementRef.nativeElement.querySelector(".navbar-burger");
+    this.navbarBurger = this.elementRef.nativeElement.querySelector(".navbar-menu");
+  }
+
+  handleMenu() {
+    this.menu.classList.toggle('is-active');
+    this.navbarBurger.classList.toggle('is-active');
+  }
 }

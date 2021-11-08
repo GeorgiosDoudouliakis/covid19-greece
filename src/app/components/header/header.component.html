@@ -1,3 +1,21 @@
-<header class="has-background-primary p-3">
-    <h1 class="has-text-centered is-size-4-mobile is-size-4-tablet has-text-white">COVID-19 Greece</h1>
+<header class="has-background-primary">
+    <nav class="navbar container is-primary" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <h1 class="has-text-centered is-size-4-mobile is-size-4-tablet">COVID-19 Greece</h1>
+      
+            <a role="button" class="navbar-burger" (click)="handleMenu()"
+            aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+      
+        <div id="navbarBasicExample" class="navbar-menu has-background-primary">
+          <div class="navbar-end">
+            <a class="navbar-item has-text-white">Home</a>
+            <a class="navbar-item has-text-white">Regions</a>
+          </div>
+        </div>
+      </nav>
 </header>
