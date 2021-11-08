@@ -1,11 +1,18 @@
 <div class="container py-3">
-    <app-overall-stats></app-overall-stats>
     <div class="columns">
-        <div class="column is-half">
-            <app-gender></app-gender>
+        <div class="column is-three-quarters">
+            <app-overall-stats></app-overall-stats>
+            <div class="columns">
+                <div class="column is-half">
+                    <app-gender></app-gender>
+                </div>
+                <div class="column is-half">
+                    <app-age-distribution></app-age-distribution>
+                </div>
+            </div>
         </div>
-        <div class="column is-half">
-            <app-age-distribution></app-age-distribution>
+        <div class="column is-one-quarter">
+            hello
         </div>
     </div>
 </div>
