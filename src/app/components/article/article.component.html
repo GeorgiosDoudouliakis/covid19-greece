@@ -1,0 +1,21 @@
+<div class="card mb-3">
+    <header class="card-header">
+        <p class="card-header-title has-text-primary">
+            {{ article.source }}
+        </p>
+    </header>
+    
+    <div class="card-content p-3">
+        <h3 class="title is-5 mb-3">{{ article.title }}</h3>
+        <div class="content">
+            <p>{{ article.description }}</p>
+        </div>
+    </div>
+
+    <footer class="card-footer">
+        <p class="card-footer-item has-text-left">
+            Author: <span>{{ article.author }}</span>
+        </p>
+        <a [href]="article.url" class="button is-primary is-outlined is-small my-auto mr-3" target="_blank">See More</a>
+    </footer>
+</div>

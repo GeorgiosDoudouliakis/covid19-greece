@@ -13,6 +13,7 @@ import { GenderComponent } from './components/gender/gender.component';
 import { AgeDistributionComponent } from './components/age-distribution/age-distribution.component';
 import { LoaderComponent } from './shared/components/loader/loader.component';
 import { LatestCovidNewsComponent } from './components/latest-covid-news/latest-covid-news.component';
+import { ArticleComponent } from './components/article/article.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { LatestCovidNewsComponent } from './components/latest-covid-news/latest-
     GenderComponent,
     AgeDistributionComponent,
     LoaderComponent,
-    LatestCovidNewsComponent
+    LatestCovidNewsComponent,
+    ArticleComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Article, News } from 'src/app/models/news.model';
 import { LatestCovidNewsService } from 'src/app/services/latest-covid-news/latest-covid-news.service';
 
 @Component({
@@ -7,12 +8,14 @@ import { LatestCovidNewsService } from 'src/app/services/latest-covid-news/lates
   styleUrls: ['./latest-covid-news.component.scss']
 })
 export class LatestCovidNewsComponent implements OnInit {
+  articles: Article[] = [];
 
   constructor(private latestCovidNewsService: LatestCovidNewsService) { }
 
   ngOnInit(): void {
-    this.latestCovidNewsService.getCovidNews().subscribe((res) => {
-      console.log(res);
+    this.latestCovidNewsService.getCovidNews().subscribe((res: News) => {
+      this.articles = res.data;
+      console.log(res.data);
     })
   }
 }
