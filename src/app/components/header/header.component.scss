@@ -9,6 +9,16 @@ h1 {
     background-color: rgba(0, 0, 0, 0.05);
 }
 
+picture {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    height: 32px;
+}
+
 @media screen and (max-width: 1023px) {
     .navbar-menu {
         box-shadow: none;

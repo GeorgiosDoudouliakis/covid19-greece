@@ -1,9 +1,16 @@
 <header class="has-background-light">
     <nav class="navbar container is-light" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <h1 class="has-text-centered is-size-4-mobile is-size-4-tablet">
-              <a href="" class="has-text-black">COVID-19 Greece</a>
-            </h1>
+            <a href="" class="is-flex">
+              <picture>
+                <source srcset="assets/images/sars-cov-191.webp" type="image/webp">
+                <source srcset="assets/images/sars-cov-191.png" type="image/png"> 
+                <img src="assets/images/sars-cov-191.png" alt="sars cov 19">
+              </picture>
+              <h1 class="is-size-4-mobile is-size-4-tablet has-text-black">
+                COVID-19 Greece
+              </h1>
+            </a>
       
             <a role="button" class="navbar-burger" (click)="handleMenu()"
             aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
