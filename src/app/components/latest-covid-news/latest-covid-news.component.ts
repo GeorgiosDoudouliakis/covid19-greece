@@ -15,7 +15,6 @@ export class LatestCovidNewsComponent implements OnInit {
   ngOnInit(): void {
     this.latestCovidNewsService.getCovidNews().subscribe((res: News) => {
       this.articles = res.data;
-      console.log(res.data);
     })
   }
 }
