@@ -9,11 +9,13 @@ import { LatestCovidNewsService } from 'src/app/services/latest-covid-news/lates
 })
 export class LatestCovidNewsComponent implements OnInit {
   articles: Article[] = [];
+  isLoading = true;
 
   constructor(private latestCovidNewsService: LatestCovidNewsService) { }
 
   ngOnInit(): void {
     this.latestCovidNewsService.getCovidNews().subscribe((res: News) => {
+      this.isLoading = false;
       this.articles = res.data;
     })
   }

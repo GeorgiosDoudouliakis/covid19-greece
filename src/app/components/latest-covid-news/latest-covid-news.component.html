@@ -1,9 +1,13 @@
 <aside class="box p-3">
     <h2 class="title is-4 mb-2">Covid News Around The World</h2>
-    <ng-container *ngFor="let article of articles">
-        <app-article [article]="article"></app-article>
+    <ng-container *ngIf="!isLoading">
+        <ng-container *ngFor="let article of articles">
+            <app-article [article]="article"></app-article>
+        </ng-container>
+        <a class="button is-primary is-block">
+            More News
+        </a>
     </ng-container>
-    <a class="button is-primary is-block">
-        More News
-    </a>
 </aside>
+
+<app-loader *ngIf="isLoading"></app-loader>
