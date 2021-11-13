@@ -1,12 +1,12 @@
-<div class="card mb-3" [tooltip]="article.description" [displayTouchscreen]="true" 
-placement="bottom" [animationDuration]="400">
+<div class="card mb-3">
     <header class="card-header">
         <p class="card-header-title has-text-primary">
             {{ article.source }}
         </p>
     </header>
     
-    <div class="card-content p-3">
+    <div class="card-content p-3" [tooltip]="article.description" [displayTouchscreen]="true" 
+    placement="bottom" [animationDuration]="400">
         <h3 class="title is-6 mb-3">{{ article.title }}</h3>
         <div class="content">
             <p [innerHTML]="article.description"></p>
