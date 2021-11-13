@@ -29,6 +29,9 @@
             rgba(255, 255, 255, 1)
         );
     }
+    p {
+        font-size: 0.9rem;
+    }
 }
 
 .card-footer-item {
@@ -41,5 +44,16 @@
     justify-content: unset;
     &:not(:last-child) {
         border-right: unset;
+    }
+}
+
+@media(min-width: 752px) and (max-width: 1023px) {
+    .card-footer {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 12px;
+        a {
+            margin-left: 12px;
+        }
     }
 }
