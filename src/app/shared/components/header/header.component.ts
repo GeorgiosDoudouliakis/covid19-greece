@@ -19,6 +19,13 @@ export class HeaderComponent implements OnInit {
     this.navbarBurger = this.elementRef.nativeElement.querySelector(".navbar-menu");
   }
 
+  closeMenu() {
+    if(this.menu.classList.contains('is-active')) {
+      this.menu.classList.remove('is-active');
+      this.navbarBurger.classList.remove('is-active');
+    }
+  }
+
   handleMenu() {
     this.menu.classList.toggle('is-active');
     this.navbarBurger.classList.toggle('is-active');
