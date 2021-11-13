@@ -9,3 +9,9 @@
 body {
     min-height: 100vh;
 }
+
+@media only screen and (max-width: 1022px) {
+    .container {
+        width: 90%;
+    }
+}
