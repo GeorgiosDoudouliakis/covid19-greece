@@ -9,9 +9,15 @@ h1 {
     font-weight: 900;
 }
 
-.navbar-item:hover {
-    color: #000;
-    background-color: rgba(0, 0, 0, 0.05);
+a.navbar-item {
+    color: #00D1B2;
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+    &.active {
+        color: #fff;
+        background-color: #00D1B2;
+    }
 }
 
 picture {
