@@ -25,23 +25,23 @@ export class OverallStatsComponent implements OnInit {
       ]).subscribe((res: any) => {
         this.isLoading = false;
         const confirmed = {
-          title: 'Confirmed',
+          title: 'Επιβεβαιωμένα',
           cases: res[0].cases[res[0].cases.length - 1].confirmed
         };
         const recovered = {
-          title: 'Recovered',
+          title: 'Αναρρώσεις',
           cases: res[1].cases[res[1].cases.length - 1].recovered
         };
         const deaths = {
-          title: 'Deaths',
+          title: 'Θάνατοι',
           cases: res[2].cases[res[2].cases.length - 1].deaths
         };
         const active = {
-          title: 'Active',
+          title: 'Ενεργά',
           cases: res[3].cases[res[3].cases.length - 1].active
         };
         const intensiveCare = {
-          title: 'Intensive Care',
+          title: 'Εντατικής Θεραπείας',
           cases: res[4].cases[res[4].cases.length - 1].intensive_care
         };
         const rapidTests = {

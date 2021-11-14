@@ -1,11 +1,11 @@
 <aside class="box p-3">
-    <h2 class="title is-5 mb-2">Covid News Around The World</h2>
+    <h2 class="title is-5 mb-2">Νέα για τον κορωνοϊο</h2>
     <ng-container *ngIf="!isLoading">
         <ng-container *ngFor="let article of articles">
             <app-article [article]="article"></app-article>
         </ng-container>
         <a routerLink="/global-news" class="button is-primary is-block">
-            More News
+            Περισσότερα Νέα
         </a>
     </ng-container>
 </aside>
