@@ -1,24 +1,19 @@
 export interface Article {
     author: string;
-    category: string;
-    country: string;
+    content: string;
     description: string;
-    image: string;
-    language: string;
-    published_at: string;
-    source: string;
+    publishedAt: string;
+    source: {
+        id: string | null;
+        name: string;
+    };
     title: string;
     url: string;
-}
-
-export interface Pagination {
-    count: number;
-    limit: number;
-    offset: number;
-    total: number;
+    urlToImage: string;
 }
 
 export interface News {
-    pagination: Pagination; 
-    data: Article[];
+    status: string;
+    articles: Article[];
+    totalResults: number;
 }

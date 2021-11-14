@@ -7,12 +7,16 @@ import { News } from '../../models/news.model';
   providedIn: 'root'
 })
 export class LatestCovidNewsService {
-  private readonly apiKey = '8fcd4ec1a94890ff2fbe58752baf2f59';
+  private readonly apiKey = '9cd9fac8c8e8487f90103d97de7b4140';
 
   constructor(private http: HttpClient) { }
 
-  getCovidNews(limit: number = 3): Observable<News> {
-    const params = new HttpParams().set("keywords", "covid").set("languages","en")
-    return this.http.get<News>(`http://api.mediastack.com/v1/news?access_key=${this.apiKey}&limit=${limit}`, { params });
+  getCovidNews(): Observable<News> {
+    const params = new HttpParams()
+                  .set('country', 'gr')
+                  .set('apiKey', this.apiKey)
+                  .set('category', 'health')
+                  .set('q', 'COVID-19')
+    return this.http.get<News>('https://newsapi.org/v2/top-headlines', { params });
   }
 }
