@@ -25,7 +25,7 @@ export class AgeDistributionComponent implements OnInit {
 
   ngOnInit(): void {
     this.ageDistributionService.getAgeDistributionCases().subscribe((res: AgeDistribution) => {
-      this.isAgeDistributionDataLoading.emit();
+      this.isAgeDistributionDataLoading.emit(false);
       const { cases } = res.total_age_groups;
       this.barChartLabels = Object.keys(cases);
       this.barChartData = [{ data: Object.values(cases) }]

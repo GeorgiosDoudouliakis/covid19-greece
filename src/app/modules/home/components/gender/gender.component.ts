@@ -28,7 +28,7 @@ export class GenderComponent implements OnInit {
 
   ngOnInit(): void {
     this.genderService.getGenderCases().subscribe((res: GenderPercentages) => {
-      this.isGenderDataLoading.emit();
+      this.isGenderDataLoading.emit(false);
       const { total_females_percentage, total_males_percentage } = res;
       this.pieChartData = [total_females_percentage, total_males_percentage];
     });

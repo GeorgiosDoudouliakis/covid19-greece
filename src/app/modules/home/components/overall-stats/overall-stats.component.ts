@@ -23,7 +23,7 @@ export class OverallStatsComponent implements OnInit {
         this.overallStatsService.getIntensiveCareCases(), 
         this.overallStatsService.getTotalTests()
       ]).subscribe((res: any) => {
-        this.isOverallStatsDataLoading.emit();
+        this.isOverallStatsDataLoading.emit(false);
         const confirmed = {
           title: 'Επιβεβαιωμένα',
           cases: res[0].cases[res[0].cases.length - 1].confirmed
