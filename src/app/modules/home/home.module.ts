@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ChartsModule } from 'ng2-charts';
-import { TooltipModule } from 'ng2-tooltip-directive';
 import { AgeDistributionComponent } from './components/age-distribution/age-distribution.component';
 import { ArticleComponent } from './components/article/article.component';
 import { CardComponent } from './components/card/card.component';
@@ -15,7 +14,7 @@ import { OverallStatsService } from './services/overall-stats/overall-stats.serv
 import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
-    imports: [RouterModule.forChild([{ path: '', component: HomeComponent}]), ChartsModule, TooltipModule, SharedModule],
+    imports: [RouterModule.forChild([{ path: '', component: HomeComponent}]), ChartsModule, SharedModule],
     exports: [RouterModule],
     declarations: [
         AgeDistributionComponent, 
