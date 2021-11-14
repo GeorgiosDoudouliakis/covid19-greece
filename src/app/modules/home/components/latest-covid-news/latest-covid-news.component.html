@@ -1,13 +1,9 @@
 <aside class="box p-3">
     <h2 class="title is-5 mb-2">Νέα για τον κορωνοϊό</h2>
-    <ng-container *ngIf="!isLoading">
-        <ng-container *ngFor="let article of articles">
-            <app-article [article]="article"></app-article>
-        </ng-container>
-        <a routerLink="/global-news" class="button is-primary is-block">
-            Περισσότερα Νέα
-        </a>
+    <ng-container *ngFor="let article of articles">
+        <app-article [article]="article"></app-article>
     </ng-container>
+    <a routerLink="/global-news" class="button is-primary is-block">
+        Περισσότερα Νέα
+    </a>
 </aside>
-
-<app-loader *ngIf="isLoading"></app-loader>

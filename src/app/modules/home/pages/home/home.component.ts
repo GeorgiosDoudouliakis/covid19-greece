@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  isOverallStatsDataLoading = true;
+  isGenderDataLoading = true;
+  isAgeDistributionDataLoading = true;
+  isLatestNewsDataLoading = true;
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }

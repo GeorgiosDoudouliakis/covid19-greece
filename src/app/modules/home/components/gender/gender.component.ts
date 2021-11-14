@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { GenderService } from '../../services/gender/gender.service';
 import { ChartOptions, ChartType } from 'chart.js';
 import { monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip, Label, SingleDataSet } from 'ng2-charts';
@@ -19,7 +19,7 @@ export class GenderComponent implements OnInit {
   public pieChartLegend = true;
   public pieChartColors: any[] = [{ backgroundColor: ["#FFBF00", "#EC0067"] }];
   public pieChartPlugins = [];
-  public isLoading = true;
+  @Output() isGenderDataLoading = new EventEmitter();
 
   constructor(private genderService: GenderService) { 
     monkeyPatchChartJsTooltip();
@@ -28,7 +28,7 @@ export class GenderComponent implements OnInit {
 
   ngOnInit(): void {
     this.genderService.getGenderCases().subscribe((res: GenderPercentages) => {
-      this.isLoading = false;
+      this.isGenderDataLoading.emit();
       const { total_females_percentage, total_males_percentage } = res;
       this.pieChartData = [total_females_percentage, total_males_percentage];
     });

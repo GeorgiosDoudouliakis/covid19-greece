@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Article, News } from '@shared/models/news.model';
 import { LatestCovidNewsService } from '@shared/services/latest-covid-news/latest-covid-news.service';
 
@@ -9,13 +9,13 @@ import { LatestCovidNewsService } from '@shared/services/latest-covid-news/lates
 })
 export class LatestCovidNewsComponent implements OnInit {
   articles: Article[] = [];
-  isLoading = true;
+  @Output() isLatestNewsDataLoading = new EventEmitter();
 
   constructor(private latestCovidNewsService: LatestCovidNewsService) { }
 
   ngOnInit(): void {
     this.latestCovidNewsService.getCovidNews().subscribe((res: News) => {
-      this.isLoading = false;
+      this.isLatestNewsDataLoading.emit();
       this.articles = res.articles;
     })
   }

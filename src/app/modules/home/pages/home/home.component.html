@@ -1,12 +1,14 @@
 <div class="container py-3">
     <div class="columns">
         <div class="column is-three-fifths">
-            <app-overall-stats></app-overall-stats>
-            <app-gender></app-gender>
-            <app-age-distribution></app-age-distribution>
+            <app-overall-stats (isOverallStatsDataLoading)="isOverallStatsDataLoading = $event"></app-overall-stats>
+            <app-gender (isGenderDataLoading)="isGenderDataLoading = $event"></app-gender>
+            <app-age-distribution (isAgeDistributionDataLoading)="isAgeDistributionDataLoading = $event"></app-age-distribution>
         </div>
         <div class="column is-two-fifths">
-            <app-latest-covid-news></app-latest-covid-news>
+            <app-latest-covid-news (isLatestNewsDataLoading)="isLatestNewsDataLoading = $event"></app-latest-covid-news>
         </div>
     </div>
 </div>
+
+<app-loader *ngIf="isOverallStatsDataLoading && isGenderDataLoading && isAgeDistributionDataLoading && isLatestNewsDataLoading"></app-loader>

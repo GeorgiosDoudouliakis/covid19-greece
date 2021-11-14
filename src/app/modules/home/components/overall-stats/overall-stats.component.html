@@ -1,10 +1,8 @@
 <div class="is-flex is-flex-direction-column overall-stats-wrapper mb-3">
     <h2 class="title is-4 mb-2">Συνολικά Στατιστικά</h2>
-    <div *ngIf="!isLoading" class="is-flex is-flex-wrap-wrap is-justify-content-space-between is-align-items-center overall-stats-container">
+    <div class="is-flex is-flex-wrap-wrap is-justify-content-space-between is-align-items-center overall-stats-container">
         <ng-container *ngFor="let stats of overallStats">
             <app-card [stats]="stats"></app-card>
         </ng-container>
     </div>
 </div>
-
-<app-loader *ngIf="isLoading"></app-loader>

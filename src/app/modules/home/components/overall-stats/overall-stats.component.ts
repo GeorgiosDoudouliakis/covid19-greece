@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { OverallStatsService } from '../../services/overall-stats/overall-stats.service';
 import { OverallStats } from '../../models/overall-stats.model';
 import { forkJoin } from 'rxjs';
@@ -9,8 +9,8 @@ import { forkJoin } from 'rxjs';
   styleUrls: ['./overall-stats.component.scss']
 })
 export class OverallStatsComponent implements OnInit {
-  isLoading = true;
   overallStats: OverallStats[] = [];
+  @Output() isOverallStatsDataLoading = new EventEmitter();
 
   constructor(private overallStatsService: OverallStatsService) { }
 
@@ -23,7 +23,7 @@ export class OverallStatsComponent implements OnInit {
         this.overallStatsService.getIntensiveCareCases(), 
         this.overallStatsService.getTotalTests()
       ]).subscribe((res: any) => {
-        this.isLoading = false;
+        this.isOverallStatsDataLoading.emit();
         const confirmed = {
           title: 'Επιβεβαιωμένα',
           cases: res[0].cases[res[0].cases.length - 1].confirmed
