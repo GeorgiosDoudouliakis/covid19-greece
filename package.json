@@ -18,10 +18,12 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
+    "@types/geojson": "^7946.0.8",
+    "@types/ol": "^6.5.3",
     "bulma": "^0.9.3",
     "chart.js": "^2.9.4",
     "ng2-charts": "^2.4.3",
-    "ol": "^6.9.0",
+    "ol": "^6.4.3",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
