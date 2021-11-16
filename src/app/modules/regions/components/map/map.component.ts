@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { defaults as defaultInteractions, DragRotateAndZoom } from 'ol/interaction';
 import Feature from 'ol/Feature';
 import Point from 'ol/geom/Point';
@@ -16,8 +16,6 @@ import { Region } from '../../models/region.model';
 import { fromLonLat } from 'ol/proj';
 import { finalize, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import Overlay from 'ol/Overlay';
-import OverlayPositioning from 'ol/OverlayPositioning';
 
 @Component({
   selector: 'app-map',
@@ -29,12 +27,14 @@ export class MapComponent implements OnInit {
   map!: Map;
   regions: Region[] = [];
   private readonly destroy$ = new Subject<void>();
+  @Output() isPerRegionDataLoading = new EventEmitter();
 
   constructor(private perRegionDataService: PerRegionDataService) {}
 
   ngOnInit() {
     this.perRegionDataService.getPerRegionData().pipe(
       finalize(() => {
+        this.isPerRegionDataLoading.emit(false);
         this.initializeMap();
         this.initializePoints();
       }),
