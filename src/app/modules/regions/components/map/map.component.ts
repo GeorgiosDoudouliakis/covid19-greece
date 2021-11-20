@@ -14,8 +14,9 @@ import View from 'ol/View';
 import { PerRegionDataService } from '../../services/per-region-data/per-region-data.service';
 import { Region } from '../../models/region.model';
 import { fromLonLat } from 'ol/proj';
-import { finalize, takeUntil } from 'rxjs/operators';
+import { filter, finalize, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import GeoJSON from "ol/format/GeoJSON";
 
 @Component({
   selector: 'app-map',
@@ -28,6 +29,7 @@ export class MapComponent implements OnInit {
   regions: Region[] = [];
   private readonly destroy$ = new Subject<void>();
   @Output() isPerRegionDataLoading = new EventEmitter();
+  @Output() regionDataHandler = new EventEmitter();
 
   constructor(private perRegionDataService: PerRegionDataService) {}
 
@@ -37,6 +39,7 @@ export class MapComponent implements OnInit {
         this.isPerRegionDataLoading.emit(false);
         this.initializeMap();
         this.initializePoints();
+        this.initializeMapClickEvent();
       }),
       takeUntil(this.destroy$)
     ).subscribe((regions) => (this.regions = [...regions]));
@@ -66,15 +69,18 @@ export class MapComponent implements OnInit {
   private initializePoints() {
     this.regions.forEach(region => {
       let points:Feature[] = [];
-
-      const point = new Feature({
+      const pointFeature = new Feature({
         geometry: new Point(fromLonLat([region.longtitude, region.latitude])),
         size: 20,
+        name: region.area_gr
       });
 
-      points = [...points, point];
+      pointFeature.setProperties({ ...region });
+
+      points = [...points, pointFeature];
 
       const vectorSource = new VectorSource({
+        format: new GeoJSON(),
         features: points,
       });
 
@@ -99,5 +105,16 @@ export class MapComponent implements OnInit {
         fill: new Fill({ color: 'white' }),
       }),
     });
+  }
+
+  private initializeMapClickEvent() {
+    this.map.on('click', (evt) => {
+      const feature = this.map.forEachFeatureAtPixel(evt.pixel, feature => feature);
+      const featureGeoType = feature?.getGeometry();
+      if(feature && featureGeoType instanceof Point) {
+        console.log(feature.getProperties());
+        this.regionDataHandler.emit(feature.getProperties());
+      }
+    })
   }
 }
