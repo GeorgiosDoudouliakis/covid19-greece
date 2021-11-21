@@ -28,4 +28,9 @@ export class RegionsComponent implements OnInit {
     this.regionDataEl.style.display = 'block';
     this.regionDataEl.scrollIntoView({ behavior: "smooth" });
   }
+
+  hideRegionDataSection() {
+    this.regionData = {} as Region;
+    this.regionDataEl.style.display = 'none';
+  }
 }

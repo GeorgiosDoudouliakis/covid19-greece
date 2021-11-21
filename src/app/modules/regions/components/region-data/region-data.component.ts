@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Region } from '../../models/region.model';
 
 @Component({
@@ -9,6 +9,7 @@ import { Region } from '../../models/region.model';
 })
 export class RegionDataComponent implements OnInit {
   @Input() regionData = {} as Region;
+  @Output() regionDataHandler = new EventEmitter();
 
   constructor() { }
 

@@ -13,7 +13,10 @@
 </div>
 
 <div class="container py-3 region-data">
-    <app-region-data [regionData]="regionData"></app-region-data>
+    <app-region-data
+    *ngIf="!(regionDataLength === 0)"
+    (regionDataHandler)="hideRegionDataSection()" 
+    [regionData]="regionData"></app-region-data>
 </div>
 
 <app-loader *ngIf="isPerRegionDataLoading"></app-loader>
