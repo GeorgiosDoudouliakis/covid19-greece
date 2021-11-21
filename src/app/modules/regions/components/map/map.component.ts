@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { defaults as defaultInteractions, DragRotateAndZoom } from 'ol/interaction';
 import Feature from 'ol/Feature';
 import Point from 'ol/geom/Point';
@@ -14,9 +14,11 @@ import View from 'ol/View';
 import { PerRegionDataService } from '../../services/per-region-data/per-region-data.service';
 import { Region } from '../../models/region.model';
 import { fromLonLat } from 'ol/proj';
-import { filter, finalize, takeUntil } from 'rxjs/operators';
+import { finalize, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import GeoJSON from "ol/format/GeoJSON";
+import Overlay from 'ol/Overlay';
+import OverlayPositioning from 'ol/OverlayPositioning';
 
 @Component({
   selector: 'app-map',
@@ -27,12 +29,15 @@ import GeoJSON from "ol/format/GeoJSON";
 export class MapComponent implements OnInit {
   map!: Map;
   regions: Region[] = [];
+  private elementRef!: ElementRef;
   private readonly destroy$ = new Subject<void>();
   @Output() isPerRegionDataLoading = new EventEmitter();
   @Output() regionDataHandler = new EventEmitter();
   @Output() goToRegionDataHandler = new EventEmitter();
 
-  constructor(private perRegionDataService: PerRegionDataService) {}
+  constructor(private elRef: ElementRef, private perRegionDataService: PerRegionDataService) {
+    this.elementRef = elRef;
+  }
 
   ngOnInit() {
     this.perRegionDataService.getPerRegionData().pipe(
@@ -43,6 +48,7 @@ export class MapComponent implements OnInit {
       this.initializeMap();
       this.initializePoints();
       this.initializeMapClickEvent();
+      this.initializePointHoverEvent();
     });
   }
 
@@ -106,6 +112,36 @@ export class MapComponent implements OnInit {
         fill: new Fill({ color: 'white' }),
       }),
     });
+  }
+
+  private initializePointHoverEvent() {
+    const element = document.getElementById('popup') as HTMLElement;
+
+    const popupOverlay = new Overlay({
+      element,
+      positioning: OverlayPositioning.BOTTOM_CENTER,
+      stopEvent: false,
+      offset: [0, -20],
+    });
+
+    this.map.addOverlay(popupOverlay);
+
+    this.map.on('pointermove', (evt) => {
+      const feature = this.map.forEachFeatureAtPixel(evt.pixel, feature => feature);
+      const featureGeoType = feature?.getGeometry();
+     
+      if(feature && featureGeoType instanceof Point) {
+        const props = feature.getProperties();
+        const popupContentContainer = element.querySelector("#text");
+        const coordinates = [props.longtitude, props.latitude];
+
+        if(popupContentContainer) popupContentContainer.textContent = props.area_gr;
+        // element.setPosition(coordinates);
+        element.style.display = 'block';
+      } else {
+        element.style.display = 'none';
+      }
+    })
   }
 
   private initializeMapClickEvent() {
