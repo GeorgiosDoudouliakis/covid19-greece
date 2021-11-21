@@ -5,11 +5,12 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { LanguageSelectorComponent } from './components/language-selector/language-selector.component';
 
 @NgModule({
     imports: [CommonModule, RouterModule],
     exports: [CommonModule, NavigationComponent, LoaderComponent],
-    declarations: [HeaderComponent, FooterComponent, NavigationComponent, LoaderComponent],
+    declarations: [HeaderComponent, FooterComponent, NavigationComponent, LoaderComponent, LanguageSelectorComponent],
     providers: [],
 })
 export class SharedModule { }
