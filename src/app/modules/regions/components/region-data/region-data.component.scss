@@ -11,9 +11,9 @@ p {
     }
 }
 
-.close-btn{
-    position: absolute;
-    top: 12px;
-    right: 20px;
+.action-btn{
     cursor: pointer;
+    &:last-of-type {
+        margin-left: 0.5rem;
+    }
 }

@@ -1,10 +1,18 @@
 <div class="box py-3" *ngIf="regionData">
-    <h3 class="title is-5 mb-3">{{ regionData.area_gr }}</h3>
+    <div class="is-flex is-justify-content-space-between is-align-items-center mb-3 box-header">
+        <h3 class="title is-5 mb-0">{{ regionData.area_gr }}</h3>
+        <div class="actions">
+            <svg class="action-btn"
+            (click)="takeScreenshot()" 
+            xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="3.2"/><path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></svg>
+            <svg class="action-btn" 
+            (click)="regionDataHandler.emit()"
+            xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </div>
+    </div>
     <p><span>Περιφέρεια</span>: {{ regionData.region_gr }}</p>
     <p><span>Γεωγραφικό Διαμέρισμα</span>: {{ regionData.geo_department_gr }}</p>
     <p><span>Πληθυσμός</span>: {{ regionData.population }}</p>
     <p><span>Περιπτώσεις ανά 100.000 κατοίκους</span>: {{ regionData.cases_per_100000_people }}</p>
     <p><span>Συνολικές περιπτώσεις κορωνοϊού</span>: {{ regionData.total_cases }}</p>
-    <svg class="close-btn" (click)="regionDataHandler.emit()"
-    xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
 </div>
