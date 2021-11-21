@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Region } from '../../models/region.model';
 import { NgxCaptureService } from 'ngx-capture';
 import { takeUntil } from 'rxjs/operators';
@@ -10,7 +10,7 @@ import { Subject } from 'rxjs';
   styleUrls: ['./region-data.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RegionDataComponent implements OnInit {
+export class RegionDataComponent implements OnInit, OnDestroy {
   private elementRef!: ElementRef;
   private destroy$ = new Subject();
   @Input() regionData = {} as Region;
@@ -18,7 +18,7 @@ export class RegionDataComponent implements OnInit {
 
   constructor(private elRef: ElementRef, private captureService: NgxCaptureService) {
     this.elementRef = elRef;
-   }
+  }
 
   ngOnInit(): void {}
 
