@@ -10,3 +10,9 @@ img {
     width: 30px;
     object-fit: cover;
 }
+
+@media screen and (min-width: 1023px) {
+    :host {
+        margin-left: 0;
+    }
+}
