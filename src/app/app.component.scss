@@ -1,0 +1,16 @@
+.go-top {
+    position: fixed;
+    right: 10px;
+    bottom: 30px;
+    display: flex;
+    opacity: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: #00D1B2;
+    padding: 0.3rem;
+    border-radius: 4px;
+    cursor: pointer;
+    &.show {
+        opacity: 1;
+    }
+}

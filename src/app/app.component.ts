@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'covid19-greece-dashboard';
+
+  goTop() {
+    window.scrollTo(0,0);
+  }
 }
