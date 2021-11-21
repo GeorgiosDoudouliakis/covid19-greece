@@ -1,13 +1,19 @@
 <div class="container py-3">
     <h2 class="title is-4 mb-2 has-text-centered">Στατιστικά για κάθε περιοχή</h2>
     <p class="has-text-centered mb-5">(πατήστε σε ένα σημείο για να εμφανιστούν λεπτομέρειες για τη συγκεκριμένη περιοχή)</p>
-    <app-map (isPerRegionDataLoading)="isPerRegionDataLoading = $event"></app-map>
-    <div class="is-flex is-justify-content-center is-align-items-center has-background-white-ter empty-section">
+    <app-map (isPerRegionDataLoading)="isPerRegionDataLoading = $event"
+    (regionDataHandler)="regionData = $event"
+    (goToRegionDataHandler)="goToRegionData()"></app-map>
+    <div *ngIf="regionDataLength === 0;" class="is-flex is-justify-content-center is-align-items-center has-background-white-ter empty-section">
         <div class="is-flex is-flex-direction-column is-align-items-center">
             <p class="is-italic has-text-weight-medium is-size-4">ΣΤΑΤΙΣΤΙΚΑ ΠΕΡΙΟΧΗΣ</p>
             <p>(δεν έχει επιλεγεί κάποια περιοχή)</p>
         </div>
     </div>
+</div>
+
+<div class="container py-3 region-data">
+    <app-region-data [regionData]="regionData"></app-region-data>
 </div>
 
 <app-loader *ngIf="isPerRegionDataLoading"></app-loader>

@@ -30,6 +30,7 @@ export class MapComponent implements OnInit {
   private readonly destroy$ = new Subject<void>();
   @Output() isPerRegionDataLoading = new EventEmitter();
   @Output() regionDataHandler = new EventEmitter();
+  @Output() goToRegionDataHandler = new EventEmitter();
 
   constructor(private perRegionDataService: PerRegionDataService) {}
 
@@ -112,8 +113,8 @@ export class MapComponent implements OnInit {
       const feature = this.map.forEachFeatureAtPixel(evt.pixel, feature => feature);
       const featureGeoType = feature?.getGeometry();
       if(feature && featureGeoType instanceof Point) {
-        console.log(feature.getProperties());
         this.regionDataHandler.emit(feature.getProperties());
+        this.goToRegionDataHandler.emit();
       }
     })
   }
