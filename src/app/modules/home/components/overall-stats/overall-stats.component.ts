@@ -1,16 +1,17 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { OverallStatsService } from '../../services/overall-stats/overall-stats.service';
 import { OverallStats } from '../../models/overall-stats.model';
-import { forkJoin } from 'rxjs';
-import { finalize } from 'rxjs/operators';
+import { forkJoin, Subject } from 'rxjs';
+import { finalize, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-overall-stats',
   templateUrl: './overall-stats.component.html',
   styleUrls: ['./overall-stats.component.scss']
 })
-export class OverallStatsComponent implements OnInit {
+export class OverallStatsComponent implements OnInit, OnDestroy {
   overallStats: OverallStats[] = [];
+  private destroy$ = new Subject();
   @Output() isOverallStatsDataLoading = new EventEmitter();
 
   constructor(private overallStatsService: OverallStatsService) { }
@@ -24,7 +25,10 @@ export class OverallStatsComponent implements OnInit {
         this.overallStatsService.getIntensiveCareCases(), 
         this.overallStatsService.getTotalTests()
       ])
-      .pipe(finalize(() => this.isOverallStatsDataLoading.emit(false)))
+      .pipe(
+        finalize(() => this.isOverallStatsDataLoading.emit(false)),
+        takeUntil(this.destroy$)
+      )
       .subscribe((res: any) => { // TODO: ADD TYPE
         const confirmed = {
           title: 'Επιβεβαιωμένα',
@@ -57,5 +61,10 @@ export class OverallStatsComponent implements OnInit {
 
         this.overallStats = [confirmed,recovered,deaths,active,intensiveCare,rapidTests,tests]
       })
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }
