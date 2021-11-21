@@ -14,7 +14,7 @@
 
     <footer class="card-footer">
         <p class="card-footer-item has-text-left">
-            Συγγραφέας: <span>{{ article.author }}</span>
+            Συγγραφέας: <span>{{ article.author || 'Άγνωστος'}}</span>
         </p>
         <a [href]="article.url" class="button is-primary is-outlined is-small my-auto mr-3" target="_blank">Περισσότερα</a>
     </footer>
