@@ -36,14 +36,14 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
     this.perRegionDataService.getPerRegionData().pipe(
-      finalize(() => {
-        this.isPerRegionDataLoading.emit(false);
-        this.initializeMap();
-        this.initializePoints();
-        this.initializeMapClickEvent();
-      }),
+      finalize(() => this.isPerRegionDataLoading.emit(false)),
       takeUntil(this.destroy$)
-    ).subscribe((regions) => (this.regions = [...regions]));
+    ).subscribe((regions) => {
+      this.regions = [...regions];
+      this.initializeMap();
+      this.initializePoints();
+      this.initializeMapClickEvent();
+    });
   }
 
   ngOnDestroy() {

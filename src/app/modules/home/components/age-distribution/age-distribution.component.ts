@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Label } from 'ng2-charts';
+import { finalize } from 'rxjs/operators';
 import { AgeDistribution } from '../../models/age-distribution.model';
 import { AgeDistributionService } from '../../services/age-distribution/age-distribution.service';
 
@@ -24,8 +25,9 @@ export class AgeDistributionComponent implements OnInit {
   constructor(private ageDistributionService: AgeDistributionService) { }
 
   ngOnInit(): void {
-    this.ageDistributionService.getAgeDistributionCases().subscribe((res: AgeDistribution) => {
-      this.isAgeDistributionDataLoading.emit(false);
+    this.ageDistributionService.getAgeDistributionCases()
+    .pipe(finalize(() => this.isAgeDistributionDataLoading.emit(false)))
+    .subscribe((res: AgeDistribution) => {
       const { cases } = res.total_age_groups;
       this.barChartLabels = Object.keys(cases);
       this.barChartData = [{ data: Object.values(cases) }]

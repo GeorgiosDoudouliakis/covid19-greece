@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { OverallStatsService } from '../../services/overall-stats/overall-stats.service';
 import { OverallStats } from '../../models/overall-stats.model';
 import { forkJoin } from 'rxjs';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-overall-stats',
@@ -22,8 +23,9 @@ export class OverallStatsComponent implements OnInit {
         this.overallStatsService.getActiveCases(), 
         this.overallStatsService.getIntensiveCareCases(), 
         this.overallStatsService.getTotalTests()
-      ]).subscribe((res: any) => {
-        this.isOverallStatsDataLoading.emit(false);
+      ])
+      .pipe(finalize(() => this.isOverallStatsDataLoading.emit(false)))
+      .subscribe((res: any) => { // TODO: ADD TYPE
         const confirmed = {
           title: 'Επιβεβαιωμένα',
           cases: res[0].cases[res[0].cases.length - 1].confirmed

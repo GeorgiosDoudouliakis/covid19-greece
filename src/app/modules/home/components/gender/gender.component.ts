@@ -3,6 +3,7 @@ import { GenderService } from '../../services/gender/gender.service';
 import { ChartOptions, ChartType } from 'chart.js';
 import { monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip, Label, SingleDataSet } from 'ng2-charts';
 import { GenderPercentages } from '../../models/gender-percentages.model';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-gender',
@@ -27,8 +28,9 @@ export class GenderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.genderService.getGenderCases().subscribe((res: GenderPercentages) => {
-      this.isGenderDataLoading.emit(false);
+    this.genderService.getGenderCases()
+    .pipe(finalize(() => this.isGenderDataLoading.emit(false)))
+    .subscribe((res: GenderPercentages) => {
       const { total_females_percentage, total_males_percentage } = res;
       this.pieChartData = [total_females_percentage, total_males_percentage];
     });
