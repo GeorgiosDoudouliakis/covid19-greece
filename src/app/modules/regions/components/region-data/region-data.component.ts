@@ -29,6 +29,8 @@ export class RegionDataComponent implements OnInit, OnDestroy {
 
   takeScreenshot() {
     const element = document.createElement('a');
+    this.elementRef.nativeElement.querySelectorAll(".action-btn").forEach((btn: SVGElement) => btn.style.display = 'none');
+
     this.captureService.getImage(this.elementRef.nativeElement, true)
     .pipe(takeUntil(this.destroy$))
     .subscribe(img => {
@@ -37,6 +39,7 @@ export class RegionDataComponent implements OnInit, OnDestroy {
       document.body.appendChild(element);
       element.click();
       document.body.removeChild(element);
+      this.elementRef.nativeElement.querySelectorAll(".action-btn").forEach((btn: SVGElement) => btn.style.display = 'initial');
     })
   }
 }
