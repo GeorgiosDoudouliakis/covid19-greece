@@ -27,9 +27,9 @@ import OverlayPositioning from 'ol/OverlayPositioning';
   encapsulation: ViewEncapsulation.None
 })
 export class MapComponent implements OnInit {
-  map!: Map;
+  map: Map;
   regions: Region[] = [];
-  private elementRef!: ElementRef;
+  private elementRef: ElementRef;
   private readonly destroy$ = new Subject<void>();
   @Output() isPerRegionDataLoading = new EventEmitter();
   @Output() regionDataHandler = new EventEmitter();

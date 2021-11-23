@@ -11,7 +11,7 @@ import { Subject } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RegionDataComponent implements OnInit, OnDestroy {
-  private elementRef!: ElementRef;
+  private elementRef: ElementRef;
   private destroy$ = new Subject();
   @Input() regionData = {} as Region;
   @Output() regionDataHandler = new EventEmitter();

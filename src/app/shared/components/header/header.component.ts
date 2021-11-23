@@ -6,9 +6,9 @@ import { Component, ElementRef, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  private elementRef!: ElementRef;
-  private menu!: HTMLElement;
-  private navbarBurger!: HTMLElement;
+  private elementRef: ElementRef;
+  private menu: HTMLElement;
+  private navbarBurger: HTMLElement;
 
   constructor(private elRef: ElementRef) { 
     this.elementRef = elRef;

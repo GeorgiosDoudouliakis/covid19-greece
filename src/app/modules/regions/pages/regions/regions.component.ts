@@ -9,8 +9,8 @@ import { Region } from '../../models/region.model';
 export class RegionsComponent implements OnInit {
   isPerRegionDataLoading = true;
   regionData = {} as Region;
-  private elementRef!: ElementRef;
-  private regionDataEl!: HTMLDivElement;
+  private elementRef: ElementRef;
+  private regionDataEl: HTMLDivElement;
 
   constructor(private elRef: ElementRef) {
     this.elementRef = elRef;
