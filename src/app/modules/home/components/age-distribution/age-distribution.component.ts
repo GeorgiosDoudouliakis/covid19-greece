@@ -3,7 +3,7 @@ import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Label } from 'ng2-charts';
 import { Subject } from 'rxjs';
 import { finalize, takeUntil } from 'rxjs/operators';
-import { AgeDistribution } from '../../models/age-distribution.model';
+import { Option, TotalAgeGroups } from '../../models/age-distribution.model';
 import { AgeDistributionService } from '../../services/age-distribution/age-distribution.service';
 
 @Component({
@@ -21,10 +21,12 @@ export class AgeDistributionComponent implements OnInit, OnDestroy {
   public barChartPlugins = [];
   public barChartData: ChartDataSets[] = []
   public pieChartColors: any[] = [{ backgroundColor: ["#00D1B4", "#FFBF00", "#EC0067", "#333"] }];
+  private totalAgeGroups = {} as TotalAgeGroups;
+  private selectedOption: Option = 'cases';
   private destroy$ = new Subject();
   @Output() isAgeDistributionDataLoading = new EventEmitter();
 
-  constructor(private ageDistributionService: AgeDistributionService) { }
+  constructor(public ageDistributionService: AgeDistributionService) { }
 
   ngOnInit(): void {
     this.ageDistributionService.getAgeDistributionCases()
@@ -32,8 +34,9 @@ export class AgeDistributionComponent implements OnInit, OnDestroy {
       finalize(() => this.isAgeDistributionDataLoading.emit(false)),
       takeUntil(this.destroy$)
     )
-    .subscribe((res: AgeDistribution) => {
+    .subscribe(res => {
       const { cases } = res.total_age_groups;
+      this.totalAgeGroups = res.total_age_groups;
       this.barChartLabels = Object.keys(cases);
       this.barChartData = [{ data: Object.values(cases) }]
     })
@@ -42,5 +45,14 @@ export class AgeDistributionComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  onOptionChange(event: any) {
+    // This is to prevent the initial select that bulma does with the select element (it reselects the value that's been selected in the dropdown even if we only click the dropdown to open it)
+    if(this.selectedOption === event.target.value) return;
+    this.selectedOption = event.target.value;
+
+    this.barChartLabels = Object.keys(this.totalAgeGroups[event.target.value as Option]);
+    this.barChartData = [{ data: Object.values(this.totalAgeGroups[event.target.value as Option]) }]
   }
 }

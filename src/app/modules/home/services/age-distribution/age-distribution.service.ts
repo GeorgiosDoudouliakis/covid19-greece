@@ -6,7 +6,6 @@ import { AgeDistribution } from '../../models/age-distribution.model';
 
 @Injectable()
 export class AgeDistributionService {
-
   constructor(private http: HttpClient) { }
 
   getAgeDistributionCases(): Observable<AgeDistribution> {
