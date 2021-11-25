@@ -20,6 +20,10 @@ a.navbar-item {
     }
 }
 
+.navbar-menu {
+    padding-top: 0;
+}
+
 @media screen and (max-width: 1023px) {
     .navbar-menu {
         box-shadow: none;
