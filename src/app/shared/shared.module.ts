@@ -5,7 +5,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { HeaderComponent } from './components/navigation/header/header.component';
 import { FooterComponent } from './components/navigation/footer/footer.component';
 import { LoaderComponent } from './components/loader/loader.component';
-import { LanguageSelectorComponent } from './components/language-selector/language-selector.component';
+import { LanguageSelectorComponent } from './components/navigation/header/language-selector/language-selector.component';
 import { ArrowVisibilityDirective } from './directives/arrow-visibility/arrow-visibility.directive';
 
 @NgModule({
