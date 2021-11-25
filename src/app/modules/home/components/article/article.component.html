@@ -7,9 +7,12 @@
     
     <div class="card-content p-3">
         <h3 class="title is-6 mb-3">{{ article.title }}</h3>
-        <div class="content">
+        <div class="content" *ngIf="article.description; else noDescription">
             <p [innerHTML]="article.description"></p>
         </div>
+        <ng-template #noDescription>
+            <p class="no-description">Δεν υπάρχει περιγραφή για το άρθρο αυτό...</p>
+        </ng-template>
     </div>
 
     <footer class="card-footer">
