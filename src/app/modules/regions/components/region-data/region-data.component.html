@@ -12,7 +12,7 @@
     </div>
     <p><span>Περιφέρεια</span>: {{ regionData.region_gr }}</p>
     <p><span>Γεωγραφικό Διαμέρισμα</span>: {{ regionData.geo_department_gr }}</p>
-    <p><span>Πληθυσμός</span>: {{ regionData.population }}</p>
-    <p><span>Περιπτώσεις ανά 100.000 κατοίκους</span>: {{ regionData.cases_per_100000_people }}</p>
-    <p><span>Συνολικές περιπτώσεις κορωνοϊού</span>: {{ regionData.total_cases }}</p>
+    <p><span>Πληθυσμός</span>: {{ regionData.population | number | replaceDotsAndCommas }}</p>
+    <p><span>Περιπτώσεις ανά 100.000 κατοίκους</span>: {{ regionData.cases_per_100000_people | number | replaceDotsAndCommas }}</p>
+    <p><span>Συνολικές περιπτώσεις κορωνοϊού</span>: {{ regionData.total_cases | number | replaceDotsAndCommas }}</p>
 </div>

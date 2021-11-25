@@ -5,6 +5,7 @@ import { NgxCaptureModule } from 'ngx-capture';
 import { RegionsComponent } from './pages/regions/regions.component';
 import { MapComponent } from './components/map/map.component';
 import { RegionDataComponent } from './components/region-data/region-data.component';
+import { ReplaceDotsAndCommasPipe } from './pipes/replace-dots-and-commas.pipe';
 
 @NgModule({
     imports: [
@@ -13,7 +14,12 @@ import { RegionDataComponent } from './components/region-data/region-data.compon
         NgxCaptureModule
     ],
     exports: [RouterModule],
-    declarations: [RegionsComponent, MapComponent, RegionDataComponent],
+    declarations: [
+        RegionsComponent, 
+        MapComponent, 
+        RegionDataComponent, 
+        ReplaceDotsAndCommasPipe
+    ],
     providers: [],
 })
 export class RegionsModule { }
