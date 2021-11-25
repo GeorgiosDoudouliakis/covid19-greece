@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { OverallStats } from '../../models/overall-stats.model';
+import { OverallStats } from '../../../models/overall-stats.model';
 
 @Component({
   selector: 'app-card',
