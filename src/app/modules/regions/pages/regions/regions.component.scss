@@ -9,14 +9,14 @@
 }
 
 @media(min-width: 1023px) {
-    p {
+    .description {
         width: 80%;
         margin: auto;
     }
 }
 
 @media(min-width: 1280px) {
-    p {
+    .description {
         width: 70%;
     }
 }
