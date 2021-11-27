@@ -1,6 +1,7 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Label } from 'ng2-charts';
+import { NgxCaptureService } from 'ngx-capture';
 import { Subject } from 'rxjs';
 import { finalize, takeUntil } from 'rxjs/operators';
 import { Option, TotalAgeGroups } from '../../models/age-distribution.model';
@@ -23,10 +24,16 @@ export class AgeDistributionComponent implements OnInit, OnDestroy {
   public pieChartColors: any[] = [{ backgroundColor: ["#00D1B4", "#FFBF00", "#EC0067", "#333"] }];
   private totalAgeGroups = {} as TotalAgeGroups;
   private selectedOption: Option = 'cases';
+  private elementRef: ElementRef;
   private destroy$ = new Subject();
   @Output() isAgeDistributionDataLoading = new EventEmitter();
 
-  constructor(public ageDistributionService: AgeDistributionService) { }
+  constructor(
+    public ageDistributionService: AgeDistributionService, 
+    private elRef: ElementRef, 
+    private captureService: NgxCaptureService) { 
+    this.elementRef = elRef;
+  }
 
   ngOnInit(): void {
     this.ageDistributionService.getAgeDistributionCases()
@@ -54,5 +61,19 @@ export class AgeDistributionComponent implements OnInit, OnDestroy {
 
     this.barChartLabels = Object.keys(this.totalAgeGroups[event.target.value as Option]);
     this.barChartData = [{ data: Object.values(this.totalAgeGroups[event.target.value as Option]) }]
+  }
+
+  takeScreenshot() {
+    const element = document.createElement('a');
+
+    this.captureService.getImage(this.elementRef.nativeElement, true)
+    .pipe(takeUntil(this.destroy$))
+    .subscribe(img => {
+      element.href = img;
+      element.setAttribute("download", "age_distribution_data.png");
+      document.body.appendChild(element);
+      element.click();
+      document.body.removeChild(element);
+    })
   }
 }
