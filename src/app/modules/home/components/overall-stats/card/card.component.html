@@ -1,6 +1,6 @@
 <div class="card p-3">
     <div class="card-content p-0">
-        <p>{{ stats.cases }}</p>
+        <p>{{ stats.cases | number | replaceCommasWithDots}}</p>
         <h3 class="title is-size-6 p-0">
             {{ stats.title }}
         </h3>
