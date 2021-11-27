@@ -1,5 +1,10 @@
 <div class="container py-3">
-    <ng-container *ngFor="let article of (articles$ | async)">
-        <app-article [article]="article"></app-article>
+    <ng-container *ngIf="articles.length > 0; else noArticles">
+        <app-article *ngFor="let article of articles" [article]="article"></app-article>
     </ng-container>
+    <ng-template #noArticles>
+        <div class="is-flex is-justify-content-center is-align-items-center has-background-white-ter no-articles-section">
+            <p class="is-italic has-text-weight-medium has-text-centered is-size-5 px-3">Δεν υπάρχουν νέα για τη χώρα που επιλέξατε!</p>
+        </div>
+    </ng-template>
 </div>

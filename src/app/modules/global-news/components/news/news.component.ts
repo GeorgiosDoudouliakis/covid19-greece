@@ -1,27 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { Article } from '@shared/models/news.model';
-import { CovidNewsService } from '@shared/services/covid-news/covid-news.service';
-import { combineLatest, Observable } from 'rxjs';
-import { pluck, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-news',
   templateUrl: './news.component.html',
-  styleUrls: ['./news.component.scss']
+  styleUrls: ['./news.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NewsComponent implements OnInit {
-  articles$: Observable<Article[]>;
+  @Input() articles: Article[];
 
-  constructor(private covidNewsService: CovidNewsService) { }
+  constructor() { }
 
-  ngOnInit(): void {
-    this.articles$ = combineLatest([
-      this.covidNewsService.countryHandler,
-      this.covidNewsService.pageHandler
-    ])
-    .pipe(
-      switchMap(([country, page]) => this.covidNewsService.getCovidNews(country, page)),
-      pluck('articles')
-    );
-  }
+  ngOnInit(): void {}
 }

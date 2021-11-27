@@ -1,6 +1,6 @@
-<div class="container py-3">
+<div class="container is-flex is-flex-direction-column py-3">
     <h2 class="title is-4 mb-2 has-text-centered">Παγκόσμια νέα για τον κορωνοϊό</h2>
     <app-country-selector></app-country-selector>
-    <app-news></app-news>
-    <app-paginator></app-paginator>
+    <app-news [articles]="articles"></app-news>
+    <app-paginator *ngIf="articles.length > 0"></app-paginator>
 </div>
