@@ -1,5 +1,5 @@
 <div class="select is-primary">
     <select [formControl]="countryControl">
-      <option *ngFor="let country of countries">{{ country }}</option>
+      <option *ngFor="let country of countries" [value]="country.code">{{ country.name }} ({{ country.code }})</option>
     </select>
 </div>
