@@ -1,1 +1,5 @@
-<p>news works!</p>
+<div class="container py-3">
+    <ng-container *ngFor="let article of (articles$ | async)">
+        <app-article [article]="article"></app-article>
+    </ng-container>
+</div>
