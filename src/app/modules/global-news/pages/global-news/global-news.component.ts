@@ -18,10 +18,9 @@ export class GlobalNewsComponent implements OnInit {
   ngOnInit(): void {
     this.articlesSubscription$ = combineLatest([
       this.covidNewsService.countryHandler,
-      this.covidNewsService.pageHandler
     ])
     .pipe(
-      switchMap(([country, page]) => this.covidNewsService.getCovidNews(country, page)),
+      switchMap(([country]) => this.covidNewsService.getCovidNews(country)),
       pluck('articles')
     )
     .subscribe(articles => this.articles = articles);
