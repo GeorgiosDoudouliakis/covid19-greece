@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Article } from '@shared/models/news.model';
 import { CovidNewsService } from '@shared/services/covid-news/covid-news.service';
-import { combineLatest, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { pluck, switchMap } from 'rxjs/operators';
 
 @Component({
@@ -11,22 +12,20 @@ import { pluck, switchMap } from 'rxjs/operators';
 })
 export class GlobalNewsComponent implements OnInit {
   articles: Article[] = [];
-  articlesSubscription$: Subscription;
+  paramsSubscription$: Subscription;
 
-  constructor(private covidNewsService: CovidNewsService) { }
+  constructor(private covidNewsService: CovidNewsService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.articlesSubscription$ = combineLatest([
-      this.covidNewsService.countryHandler,
-    ])
-    .pipe(
-      switchMap(([country]) => this.covidNewsService.getCovidNews(country)),
-      pluck('articles')
-    )
-    .subscribe(articles => this.articles = articles);
+    this.paramsSubscription$ = this.route.queryParams
+      .pipe(
+        switchMap((params) => this.covidNewsService.getCovidNews(params.country)),
+        pluck('articles')
+      )
+      .subscribe(articles => this.articles = articles);
   }
-
+  
   ngOnDestroy() {
-    this.articlesSubscription$?.unsubscribe();
+    this.paramsSubscription$?.unsubscribe();
   }
 }

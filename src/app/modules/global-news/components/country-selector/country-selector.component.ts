@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { CovidNewsService } from '@shared/services/covid-news/covid-news.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { COUNTRIES } from '../../mock/countries.mock';
@@ -21,14 +21,19 @@ export class CountrySelectorComponent implements OnInit, OnDestroy {
   countryControl: FormControl = new FormControl(null);
   private destroy$ = new Subject();
 
-  constructor(private covidNewsService: CovidNewsService) { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.countries = COUNTRIES;
 
     this.countryControl.valueChanges
       .pipe(takeUntil(this.destroy$))
-      .subscribe(country => this.covidNewsService.countryAction(country));
+      .subscribe(country => { 
+        this.router.navigate(['./'], {
+          relativeTo: this.route,
+          queryParams: { country }
+        })
+      });
   }
 
   ngOnDestroy() {
