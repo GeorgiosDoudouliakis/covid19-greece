@@ -8,6 +8,7 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { LanguageSelectorComponent } from './components/navigation/header/language-selector/language-selector.component';
 import { ArticleComponent } from './components/article/article.component';
 import { ArrowVisibilityDirective } from './directives/arrow-visibility/arrow-visibility.directive';
+import { ThemeChangeComponent } from './components/navigation/header/theme-change/theme-change.component';
 
 @NgModule({
     imports: [CommonModule, RouterModule],
@@ -25,7 +26,8 @@ import { ArrowVisibilityDirective } from './directives/arrow-visibility/arrow-vi
         LoaderComponent, 
         LanguageSelectorComponent, 
         ArticleComponent, 
-        ArrowVisibilityDirective
+        ArrowVisibilityDirective, 
+        ThemeChangeComponent
     ],
     providers: [],
 })
