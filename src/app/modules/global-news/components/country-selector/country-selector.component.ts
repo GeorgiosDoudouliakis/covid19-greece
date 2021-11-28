@@ -18,14 +18,14 @@ interface Country {
 })
 export class CountrySelectorComponent implements OnInit, OnDestroy {
   countries: Country[];
-  countryControl: FormControl = new FormControl(null);
+  countryControl: FormControl = new FormControl('gr');
   private destroy$ = new Subject();
 
   constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.countries = COUNTRIES;
-
+    
     this.countryControl.valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe(country => { 
