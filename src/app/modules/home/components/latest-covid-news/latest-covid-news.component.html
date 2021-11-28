@@ -1,4 +1,4 @@
-<aside class="box p-3">
+<aside class="box p-3 latest-covid-news">
     <h2 class="title is-5 mb-5">Νέα για τον κορωνοϊό</h2>
     <ng-container *ngIf="articles.length > 0; else noArticles">
         <app-article *ngFor="let article of articles"[article]="article"></app-article>

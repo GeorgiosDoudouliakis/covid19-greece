@@ -1,0 +1,10 @@
+.go-to-news-section-container {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 10%;
+    right: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 50;
+}

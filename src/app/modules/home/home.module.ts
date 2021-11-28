@@ -12,6 +12,8 @@ import { GenderService } from './services/gender/gender.service';
 import { OverallStatsService } from './services/overall-stats/overall-stats.service';
 import { HomeComponent } from './pages/home/home.component';
 import { ReplaceCommasWithDotsPipe } from './pipes/replace-commas-with-dots.pipe';
+import { GoToNewsSectionComponent } from './components/go-to-news-section/go-to-news-section.component';
+import { GoToNewsDirective } from './directives/go-to-news.directive';
 
 @NgModule({
     imports: [RouterModule.forChild([{ path: '', component: HomeComponent}]), ChartsModule, SharedModule],
@@ -23,7 +25,9 @@ import { ReplaceCommasWithDotsPipe } from './pipes/replace-commas-with-dots.pipe
         LatestCovidNewsComponent,
         OverallStatsComponent,
         HomeComponent,
-        ReplaceCommasWithDotsPipe
+        ReplaceCommasWithDotsPipe,
+        GoToNewsSectionComponent,
+        GoToNewsDirective
     ],
     providers: [OverallStatsService, AgeDistributionService, GenderService],
 })
