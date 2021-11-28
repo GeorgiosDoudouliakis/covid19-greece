@@ -4,3 +4,6 @@
       <option *ngFor="let country of countries" [value]="country.code">{{ country.name }} ({{ country.code }})</option>
     </select>
 </div>
+<span *ngIf="numberOfArticles !== 0" class="ml-3 has-text-weight-bold">
+  -{{ numberOfArticles }}-
+</span>

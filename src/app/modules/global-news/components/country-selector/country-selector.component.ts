@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
@@ -17,6 +17,7 @@ interface Country {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CountrySelectorComponent implements OnInit, OnDestroy {
+  @Input() numberOfArticles: number;
   countries: Country[];
   countryControl: FormControl = new FormControl('gr');
   private destroy$ = new Subject();
@@ -25,7 +26,7 @@ export class CountrySelectorComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.countries = COUNTRIES;
-    
+
     this.countryControl.valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe(country => { 

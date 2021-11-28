@@ -12,6 +12,7 @@ import { pluck, switchMap } from 'rxjs/operators';
 })
 export class GlobalNewsComponent implements OnInit {
   articles: Article[] = [];
+  numberOfArticles: number;
   paramsSubscription$: Subscription;
 
   constructor(private covidNewsService: CovidNewsService, private route: ActivatedRoute) { }
@@ -22,7 +23,10 @@ export class GlobalNewsComponent implements OnInit {
         switchMap((params) => this.covidNewsService.getCovidNews(params.country)),
         pluck('articles')
       )
-      .subscribe(articles => this.articles = articles);
+      .subscribe(articles => {
+        this.articles = articles;
+        this.numberOfArticles = articles.length;
+      });
   }
   
   ngOnDestroy() {
