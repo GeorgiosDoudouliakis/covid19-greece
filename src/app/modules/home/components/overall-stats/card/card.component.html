@@ -1,6 +1,7 @@
 <div class="card p-3">
     <div class="card-content p-0">
-        <p>{{ stats.cases | number | replaceCommasWithDots}}</p>
+        <p *ngIf="stats.title !== 'Γυναίκες' && stats.title !== 'Άνδρες'">{{ stats.cases | number | replaceCommasWithDots}}</p>
+        <p *ngIf="stats.title === 'Γυναίκες' || stats.title === 'Άνδρες'">{{ stats.cases }}%</p>
         <h3 class="title is-size-6 p-0">
             {{ stats.title }}
         </h3>

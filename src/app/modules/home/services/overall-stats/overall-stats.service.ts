@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { GenderPercentages } from '../../models/gender-percentages.model';
+import { pluck } from 'rxjs/operators';
 
 @Injectable()
 export class OverallStatsService {
@@ -27,5 +30,9 @@ export class OverallStatsService {
 
   getTotalTests() {
     return this.http.get("https://covid-19-greece.herokuapp.com/total-tests");
+  }
+
+  getGenderCases(): Observable<GenderPercentages> {
+    return this.http.get("https://covid-19-greece.herokuapp.com/gender-distribution").pipe(pluck('gender_percentages'));
   }
 }
