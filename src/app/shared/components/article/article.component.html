@@ -1,8 +1,11 @@
 <div class="card mb-3">
-    <header class="card-header">
-        <p class="card-header-title has-text-primary">
+    <header class="card-header is-align-items-center">
+        <p class="card-header-title has-text-primary pr-2">
             {{ (article.source.name || 'Άγνωστη Πηγή') | uppercase }}
         </p>
+        <span class="is-italic is-family-code">
+            ({{ article.publishedAt | toLocalTime }})
+        </span>
     </header>
     
     <div class="card-content p-3">

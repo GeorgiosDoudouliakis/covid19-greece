@@ -7,6 +7,7 @@ import { FooterComponent } from './components/navigation/footer/footer.component
 import { LoaderComponent } from './components/loader/loader.component';
 import { ArticleComponent } from './components/article/article.component';
 import { ArrowVisibilityDirective } from './directives/arrow-visibility/arrow-visibility.directive';
+import { ToLocalTimePipe } from './pipes/to-local-time.pipe';
 
 @NgModule({
     imports: [CommonModule, RouterModule],
@@ -23,7 +24,7 @@ import { ArrowVisibilityDirective } from './directives/arrow-visibility/arrow-vi
         NavigationComponent, 
         LoaderComponent, 
         ArticleComponent, 
-        ArrowVisibilityDirective
+        ArrowVisibilityDirective, ToLocalTimePipe
     ],
     providers: [],
 })
