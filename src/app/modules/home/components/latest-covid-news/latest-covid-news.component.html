@@ -1,7 +1,9 @@
 <aside class="box p-3 latest-covid-news">
     <h2 class="title is-5 mb-5">
         Νέα για τον κορωνοϊό 
-        <span class="is-size-6 has-text-weight-bold">{{ articles.length > 0 ? "-" + articles.length + "-" : '' }}</span>
+        <span *ngIf="articles.length > 0" class="is-size-6 has-text-weight-bold number-of-articles home">
+            {{ articles.length }}
+        </span>
     </h2>
     <ng-container *ngIf="articles.length > 0; else noArticles">
         <app-article *ngFor="let article of articles"[article]="article"></app-article>

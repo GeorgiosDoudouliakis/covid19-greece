@@ -27,6 +27,30 @@ body::-webkit-scrollbar-thumb {
     background-color: #00D1B2;
 }
 
+.number-of-articles {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    background: #00D1B2;
+    border-radius: 100%;
+    &.home {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media(min-width: 850px) {
+    .number-of-articles {
+        &.home {
+            width: 30px;
+            height: 30px;
+        }
+    }
+}
+
 @media only screen and (max-width: 1023px) {
     .container {
         width: 90%;
