@@ -14,6 +14,7 @@ export class GlobalNewsComponent implements OnInit {
   articles: Article[] = [];
   numberOfArticles: number;
   paramsSubscription$: Subscription;
+  isGlobalNewsDataLoading = true;
 
   constructor(private covidNewsService: CovidNewsService, private route: ActivatedRoute) { }
 
@@ -23,10 +24,14 @@ export class GlobalNewsComponent implements OnInit {
         switchMap((params) => this.covidNewsService.getCovidNews(params.country)),
         pluck('articles')
       )
-      .subscribe(articles => {
-        this.articles = articles;
-        this.numberOfArticles = articles.length;
-      });
+      .subscribe(
+        articles => {
+          this.articles = articles;
+          this.numberOfArticles = articles.length;
+          this.isGlobalNewsDataLoading = false;
+        },
+        (err) => this.isGlobalNewsDataLoading = false
+      );
   }
   
   ngOnDestroy() {

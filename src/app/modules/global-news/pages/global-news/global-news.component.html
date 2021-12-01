@@ -3,3 +3,5 @@
     <app-country-selector [numberOfArticles]="numberOfArticles"></app-country-selector>
     <app-news [articles]="articles"></app-news>
 </div>
+
+<app-loader *ngIf="isGlobalNewsDataLoading"></app-loader>
