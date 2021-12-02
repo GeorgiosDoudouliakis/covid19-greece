@@ -27,6 +27,10 @@ body::-webkit-scrollbar-thumb {
     background-color: #00D1B2;
 }
 
+h1, h2, h3, p, span {
+    line-height: 1.5rem !important;
+}
+
 .number-of-articles {
     display: inline-flex;
     justify-content: center;
