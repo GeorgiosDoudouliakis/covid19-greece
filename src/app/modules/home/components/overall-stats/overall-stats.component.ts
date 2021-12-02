@@ -30,7 +30,7 @@ export class OverallStatsComponent implements OnInit, OnDestroy {
         finalize(() => this.isOverallStatsDataLoading.emit(false)),
         takeUntil(this.destroy$)
       )
-      .subscribe((res: any) => { // TODO: ADD TYPE
+      .subscribe((res: any) => {
         const confirmed = {
           title: 'Επιβεβαιωμένα',
           cases: res[0].cases[res[0].cases.length - 1].confirmed
