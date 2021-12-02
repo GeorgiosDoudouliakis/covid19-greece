@@ -35,6 +35,10 @@ export class CountrySelectorComponent implements OnInit, OnDestroy {
           queryParams: { country }
         })
       });
+
+    this.route.queryParams.pipe(takeUntil(this.destroy$)).subscribe(params => {
+      this.countryControl.patchValue(params.country);
+    })  
   }
 
   ngOnDestroy() {
