@@ -1,27 +1,19 @@
-# Covid19GreeceDashboard
+# COVID-19 GREECE
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.4.
 
-## Development server
+## Description
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+A webpage with stats about COVID-19 in Greece.
+**Home Page**: Overall stats about COVID-19 in Greece with a sidebar for news.
+**Regions Page**: Map with points which are showing the overall cases in each region. The user can click to a point which will reveal a section below the map with more information about the region that he clicked. The user has the ability to take a screenshot of the region's information.
+**Global News Page**: List of news for COVID-19 where the user have the ability to pick a country for which he wants to see the news.
 
-## Code scaffolding
+## Packages Used
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- bulma v0.9.3
+- open layers v6.4.3
+- chart.js v2.9.4
+- moment v2.29.1
+- ng2-charts v2.4.3
+- ngx-capture v0.12.1
