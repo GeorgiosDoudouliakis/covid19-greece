@@ -15,8 +15,9 @@ const routes: Routes = [
       { path: 'regions', 
         loadChildren: () => import('./modules/regions/regions.module').then(m => m.RegionsModule) 
       }
-    ]
-  }
+    ],
+  },
+  { path: '**',  redirectTo: '' }
 ];
 
 @NgModule({
