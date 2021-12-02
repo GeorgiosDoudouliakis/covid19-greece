@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Description
 
-A webpage with stats about COVID-19 in Greece.
+A webpage with stats about COVID-19 in Greece.<br>
 **Home Page**: Overall stats about COVID-19 in Greece with a sidebar for news.<br>
 **Regions Page**: Map with points which are showing the overall cases in each region. The user can click to a point which will reveal a section below the map with more information about the region that he clicked. The user has the ability to take a screenshot of the region's information.<br>
 **Global News Page**: List of news for COVID-19 where the user have the ability to pick a country for which he wants to see the news.
