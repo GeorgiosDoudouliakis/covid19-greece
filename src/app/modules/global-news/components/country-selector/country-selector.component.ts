@@ -3,12 +3,7 @@ import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { COUNTRIES } from '../../mock/countries.mock';
-
-interface Country {
-  name: string;
-  code: string;
-}
+import { Country } from '../../models/country.model';
 
 @Component({
   selector: 'app-country-selector',
@@ -18,15 +13,13 @@ interface Country {
 })
 export class CountrySelectorComponent implements OnInit, OnDestroy {
   @Input() numberOfArticles: number;
-  countries: Country[];
+  @Input() countries: Country[];
   countryControl: FormControl = new FormControl('gr');
   private destroy$ = new Subject();
 
   constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.countries = COUNTRIES;
-
     this.countryControl.valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe(country => { 
@@ -37,6 +30,10 @@ export class CountrySelectorComponent implements OnInit, OnDestroy {
       });
 
     this.route.queryParams.pipe(takeUntil(this.destroy$)).subscribe(params => {
+      if(this.countries.filter(country => country.code === params.country).length === 0) {
+        this.countryControl.patchValue('gr');
+        return;
+      }
       this.countryControl.patchValue(params.country);
     })  
   }
