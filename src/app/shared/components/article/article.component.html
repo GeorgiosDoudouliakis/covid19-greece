@@ -3,9 +3,9 @@
         <p class="card-header-title has-text-primary pr-2">
             {{ (article.source.name || 'Άγνωστη Πηγή') | uppercase }}
         </p>
-        <span class="is-italic is-family-code">
+        <time class="is-italic is-family-code">
             ({{ article.publishedAt | toLocalTime }})
-        </span>
+        </time>
     </header>
     
     <div class="card-content p-3">
