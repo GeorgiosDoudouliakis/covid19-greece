@@ -1,4 +1,4 @@
-<span class="mr-3">Select country:</span>
+<span class="mr-3">Επέλεξε χώρα:</span>
 <div class="select is-primary">
     <select [formControl]="countryControl">
       <option *ngFor="let country of countries" [value]="country.code">{{ country.name }} ({{ country.code }})</option>

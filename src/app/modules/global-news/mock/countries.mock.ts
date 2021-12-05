@@ -1,206 +1,206 @@
 export const COUNTRIES = [
     {
-        name: 'Greece',
+        name: 'Ελλάδα',
         code: 'gr'
     },
     {
-        name: 'United Arab Emirates',
+        name: 'Ηνωμένα Αραβικά Εμιράτα',
         code: 'ae'
     },
     {
-        name: 'Argentina',
+        name: 'Αργεντινή',
         code: 'ar'
     },
     {
-        name: 'Austria',
+        name: 'Αυστρία',
         code: 'at'
     },
     {
-        name: 'Australia',
+        name: 'Αυστραλία',
         code: 'au'
     },
     {
-        name: 'Belgium',
+        name: 'Βέλγιο',
         code: 'be'
     },
     {
-        name: 'Bulgaria',
+        name: 'Βουλγαρία',
         code: 'bg'
     },
     {
-        name: 'Canada',
+        name: 'Καναδάς',
         code: 'ca'
     }, 
     {
-        name: 'Switzerland',
+        name: 'Ελβετία',
         code: 'ch'
     },
     {
-        name: 'China',
+        name: 'Κίνα',
         code: 'cn'
     },
     {
-        name: 'Colombia',
+        name: 'Κολομβία',
         code: 'co'
     },
     {
-        name: 'Cuba',
+        name: 'Κούβα',
         code: 'cu'
     },
     {
-        name: 'Czechia',
+        name: 'Τσεχία',
         code: 'cz'
     },
     {
-        name: 'Germany',
+        name: 'Γερμανία',
         code: 'de'
     },
     {
-        name: 'Egypt',
+        name: 'Αίγυπτος',
         code: 'eg'
     },
     {
-        name: 'France',
+        name: 'Γαλλία',
         code: 'fr'
     },
     {
-        name: 'United Kingdom',
+        name: 'Ηνωμένο Βασίλειο',
         code: 'gb'
     },
     {
-        name: 'Hong Kong',
+        name: 'Χονγκ Κονγκ',
         code: 'hk'
     },
     {
-        name: 'Hungary',
+        name: 'Ουγγαρία',
         code: 'hu'
     },
     {
-        name: 'Indonesia',
+        name: 'Ινδονησία',
         code: 'id'
     },
     {
-        name: 'Ireland',
+        name: 'Ιρλανδία',
         code: 'ie'
     },
     {
-        name: 'Israel',
+        name: 'Ισραήλ',
         code: 'il'
     },
     {
-        name: 'Italy',
+        name: 'Ιταλία',
         code: 'it'
     },
     {
-        name: 'Japan',
+        name: 'Ιαπωνία',
         code: 'jp'
     },
     {
-        name: 'South Korea',
+        name: 'Νότια Κορέα',
         code: 'kr'
     },
     {
-        name: 'Lithuania',
+        name: 'Λιθουανία',
         code: 'lt'
     },
     {
-        name: 'Latvia',
+        name: 'Λετονία',
         code: 'lv'
     },
     {
-        name: 'Morocco',
+        name: 'Μαρόκο',
         code: 'ma'
     },
     {
-        name: 'Mexico',
+        name: 'Μεξικό',
         code: 'mx'
     },
     {
-        name: 'Malaysia',
+        name: 'Μαλαισία',
         code: 'my'
     },
     {
-        name: 'Nigeria',
+        name: 'Νιγηρία',
         code: 'ng'
     },
     {
-        name: 'Netherlands',
+        name: 'Ολλανδία',
         code: 'nl'
     },
     {
-        name: 'New Zealand',
+        name: 'Νέα Ζηλανδία',
         code: 'nz'
     },
     {
-        name: 'Philippines',
+        name: 'Φιλιππίνες',
         code: 'ph'
     },
     {
-        name: 'Poland',
+        name: 'Πολωνία',
         code: 'pl'
     },
     {
-        name: 'Portugal',
+        name: 'Πορτογαλία',
         code: 'pt'
     },
     {
-        name: 'Romania',
+        name: 'Ρουμανία',
         code: 'ro'
     },
     {
-        name: 'Serbia',
+        name: 'Σερβία',
         code: 'rs'
     },
     {
-        name: 'Russia',
+        name: 'Ρωσσία',
         code: 'ru'
     },
     {
-        name: 'South Africa',
+        name: 'Νότια Αφρική',
         code: 'sa'
     },
     {
-        name: 'Sweden',
+        name: 'Σουηδία',
         code: 'se'
     },
     {
-        name: 'Singapore',
+        name: 'Σιγκαπούρη',
         code: 'sg'
     },
     {
-        name: 'Slovenia',
+        name: 'Σλοβενία',
         code: 'si'
     },
     {
-        name: 'Slovakia',
+        name: 'Σλοβακία',
         code: 'sk'
     },
     {
-        name: 'Thailand',
+        name: 'Ταϊλάνδη',
         code: 'th'
     },
     {
-        name: 'Turkey',
+        name: 'Τουρκία',
         code: 'tr'
     },
     {
-        name: 'Taiwan',
+        name: 'Ταϊβάν',
         code: 'tw'
     },
     {
-        name: 'Ukraine',
+        name: 'Ουκρανία',
         code: 'ua'
     },
     {
-        name: 'United States',
+        name: 'Ηνωμένες Πολιτείες',
         code: 'us'
     },
     {
-        name: 'Venezuela',
+        name: 'Βενεζουέλα',
         code: 've'
     },
     {
-        name: 'South Africa',
+        name: 'Νότια Αφρική',
         code: 'za'
     }
 ]
